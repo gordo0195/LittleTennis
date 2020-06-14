@@ -37,9 +37,11 @@ public class StartWin extends JPanel {
 		Buttm.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("nueva");
 				Main NewGame = new Main();
+				Thread neew = new Thread(NewGame);
 				NewGame.setVisible(true);
+				neew.start();
+				//StartFrame.setDefaultCloseOperation(JFrame.ABORT);
 			}	
 		});
 	}

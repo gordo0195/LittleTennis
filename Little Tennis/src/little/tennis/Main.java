@@ -20,7 +20,7 @@ import java.awt.Cursor;
  * @version: 0.8 : 06/06/2020
  */ 
 @SuppressWarnings("serial")
-public class Main extends JPanel{
+public class Main extends JPanel implements Runnable{
 	
 	//declaration of variables:
 	Ball ball = new Ball(this);
@@ -107,24 +107,30 @@ public void End() {
  * @return un ciclo infinito con la inicialización del juego
  * @exception nula
  *  */
-@SuppressWarnings("deprecation")
-public static void main(String[] args) throws InterruptedException{
-	JFrame WinGame = new JFrame("Little Tennis!");
-	//JPanel Wall = new JPanel();
-	WinGame.setCursor(Cursor.HAND_CURSOR);
+//@SuppressWarnings("deprecation")
+//public static void main(String[] args) throws InterruptedException{
+public void run() {
+	 
+	try {
+		JFrame WinGame = new JFrame("Little Tennis!");
+		//	JPanel Wall = new JPanel();
+		//WinGame.setCursor(Cursor.HAND_CURSOR);
 	
-	Main game = new Main();
-	WinGame.add(new ImagenWall());
-	WinGame.add(game);
-	WinGame.setSize(700,450);
-	WinGame.setVisible(true);
-	WinGame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		Main Game = new Main();
+		WinGame.add(new ImagenWall());
+		WinGame.add(Game);
+		WinGame.setSize(700,450);
+		WinGame.setVisible(true);
+		WinGame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	
 	
-	while(true) {
-		game.move();
-		game.repaint();
-		Thread.sleep(10);
+		while(true) {
+			Game.move();
+			Game.repaint();
+			Thread.sleep(10);
+			}
+	}
+	catch(Exception e) {
 		}
 	}
 }
